@@ -1,9 +1,10 @@
 FROM node:14.17.3-alpine3.14 as builder
-WORKDIR "/app"
-COPY ./package.json ./
-RUN npm install
-COPY . .
-CMD ["npm", "run", "build"]
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
+RUN npm install --silent
+COPY . ./
+RUN npm run build
 
 FROM nginx
 EXPOSE 3000
