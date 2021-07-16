@@ -21,15 +21,14 @@ after_success:
   - docker push levpa/multi-server
   - docker push levpa/multi-worker
   # Deploy to the AWS BeansTalk
-  deploy:
-    provider: elasticbeanstalk
-    region: 'eu-central-1'
-    app: 'multi-docker'
-    env: 'MultiDocker-env'
-    bucket_name: 'elasticbeanstalk-eu-central-1-062423807195'
-    bucket_path: 'docker-multi'
-    on:
-      branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-central-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-eu-central-1-062423807195'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
